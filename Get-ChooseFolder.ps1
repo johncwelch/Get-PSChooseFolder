@@ -84,3 +84,6 @@ function Get-ChooseFolder {
 	#this is what we return
 	return $chooseFolderArrayList
 }
+
+#what the module shows the world
+Export-ModuleMember -Function Get-ChooseFolder

@@ -121,6 +121,12 @@ function Get-ChooseFolder {
 	#run the command
 	$chooseFolderString = $chooseFolderCommand|/usr/bin/osascript -so
 
+	#deal with cancel
+	if($chooseFileString.Contains("execution error: User canceled. `(-128`)")) {
+		#Write-Output "user hit cancel button"
+		return "userCancelError"
+	}
+
 	#build the output array
 	$chooseFolderArray = $chooseFolderString.Split(",")
 	#we need an arrayList here to shove the processed entries into.
@@ -154,8 +160,8 @@ Export-ModuleMember -Function Get-ChooseFolder
 # SIG # Begin signature block
 # MIIMgAYJKoZIhvcNAQcCoIIMcTCCDG0CAQMxDTALBglghkgBZQMEAgEwewYKKwYB
 # BAGCNwIBBKBtBGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAXATPS0LUvV4yB
-# ubzvXw8j3r4zkY0+nV+4AnA+LrNioqCCCaswggQEMIIC7KADAgECAggYeqmowpYh
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAT3yvbc6lFnkiR
+# Z1/kkL0riEenj8ETkpDnBFhJ68ge9aCCCaswggQEMIIC7KADAgECAggYeqmowpYh
 # DDANBgkqhkiG9w0BAQsFADBiMQswCQYDVQQGEwJVUzETMBEGA1UEChMKQXBwbGUg
 # SW5jLjEmMCQGA1UECxMdQXBwbGUgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxFjAU
 # BgNVBAMTDUFwcGxlIFJvb3QgQ0EwHhcNMTIwMjAxMjIxMjE1WhcNMjcwMjAxMjIx
@@ -212,11 +218,11 @@ Export-ModuleMember -Function Get-ChooseFolder
 # b24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUwII
 # Bh5mm1/XjiowCwYJYIZIAWUDBAIBoHwwEAYKKwYBBAGCNwIBDDECMAAwGQYJKoZI
 # hvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcC
-# ARUwLwYJKoZIhvcNAQkEMSIEIHajZR3x87CIoWzVSdqNI+6ovqtXWDLaoxJuD89Q
-# UObZMAsGCSqGSIb3DQEBAQSCAQAFpSHgZrG8p2pW6EUJxqyDscyhI6DruVBCiRX9
-# Jpa+OdKyf2uEM4cqH2U/40GwfVyOwJF85Lt56yPExVy3DV898adEZkdanme8gKBy
-# +6dFU0hjHBCx9eI7nPiPtna7Nud4UQ7AIjFfRoeAYNWyWgL3+3YkNKsqpeQj51/Q
-# OoqQUYfLKOfZc3+detmmzTjiQIVUBC9Pv2c4c3f7+no463iEp3NPkEDNd1jmh+AX
-# 7BU/O7xkgfy8n8UsNhyMLrZ2C2RgwKVR5/WGkepy07M+YAh4HH1jSTzAmh63t0/w
-# ll55SDaSps2F9JiCWaLnQSeZEAvPPPJiknu2xb3aIak11EFU
+# ARUwLwYJKoZIhvcNAQkEMSIEILsTrfHUucQfyA6adJQLPeGMqR3VTi8N0Rb9RRyJ
+# M+9kMAsGCSqGSIb3DQEBAQSCAQC78iOlQfrBbKR1v80kU2tyhbQW+vjA+g2/OLF7
+# xT5ZcANJ4bAsQs0LEoIRJW3UXZ9+pWI1+SUlrhuFYgqjVYrSHbGglmoIUt9ZpyTD
+# KlW203zHlGf3EB8bNTvHtVcXmD4Gq8Pa14AHnsT6xgruge+LOpqwpDoJTmey+/I6
+# AYyLlqv01eS50EQbACrpCYeYC5WGGyGsg+nfC6l86F9bmZ1rAK12cke36CbD2hj0
+# mIf+bx0C5qYQHxWivROnpcO15lVKIPPLzoEfQIGLhofCQ+7wwEyLzjIfHYoWvzDX
+# hSYT81VoLZr19TamoG7wMlYK6eQ/GIp9WqNdi1tLNLsliBO3
 # SIG # End signature block

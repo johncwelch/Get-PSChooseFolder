@@ -31,11 +31,11 @@ function Get-ChooseFolder {
 	That will give you a dialog that lets you choose a single folder
 
 	.EXAMPLE
-	Choose Folder with custom prompt: 
+	Choose Folder with custom prompt:
 		Get-ChooseFolder -chooseFolderPrompt "My Custom Prompt"
 
 	.EXAMPLE
-	Choose folder starting in a specified folder: 
+	Choose folder starting in a specified folder:
 		Get-ChooseFolder -defaultLocation "Some unix path"
 	Note that with the default location parameter, you shouldn't have to escape spaces, single quotes etc. Since this is expecting double quotes around the string, if you use a double quote in the file path, you'd have to escape it. HOWEVER, this is WHERE IT GETS WEIRD, because you have to combine unix AND PowerShell escaping.
 
@@ -64,7 +64,7 @@ function Get-ChooseFolder {
 	https://github.com/johncwelch/Get-PSChooseFolder
 
 	#>
-	
+
 	Param (
 		#we do the params this way so the help shows the description
 		[Parameter(Mandatory = $false)][string]
@@ -110,7 +110,7 @@ function Get-ChooseFolder {
 	}
 
 	if($multipleSelectionsAllowed) {
-		#multiple selections allowed is true. This syntax seems awkward, but you can have multiple boolean "with" clauses in 
+		#multiple selections allowed is true. This syntax seems awkward, but you can have multiple boolean "with" clauses in
 		#a choose file statement. It works for osascript and it's quite consistent.
 		$chooseFolderCommand = $chooseFolderCommand + "with multiple selections allowed "
 	}
